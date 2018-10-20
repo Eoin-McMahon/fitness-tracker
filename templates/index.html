@@ -27,6 +27,18 @@
 <!-- the div is used to apply the gradient -->
 <div class="gradient">
   <!-- Body (SECTION 2/3) -->
+  <p id="xml_converted"></p>
+  <script>
+      var text, parser, xmlDoc;
+
+      text = static/Uploads/Lugano.gpx;
+
+      parser = new DOMParser();
+      xmlDoc = parser.parseFromString(text,"text/xml");
+
+      document.getElementById("xml_converted").innerHTML =
+      xmlDoc.getElementsByTagName("activity")[0].childNodes[0].nodeValue;
+   </script>
   <div id="map" style="height: 250px;"></div>
   <script type="text/javascript">
     // The first parameter are the coordinates of the center of the map
