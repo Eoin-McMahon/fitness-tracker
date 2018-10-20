@@ -1,24 +1,24 @@
 <!--top section -->
-<link href="style.css" rel="stylesheet" type="text/css">
-<script src="script.js"></script>
+<link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet" type="text/css" href=rel="stylesheet" type="text/css">
+<script src="{{url_for('static', filename = 'script.js')}}"></script>
 
 <header class="masthead">
   <p class="masthead-intro">Hi, We:</p>
   <h1 class="masthead-heading">OrangMales</h1>
 
   <div class="button-grey">
-  <button class="button button-grey" id="introductionButton" onclick="scrollToSection('introductionButton');">
-    INTRODUCTION
-  </button>
+    <button class="button button-grey" id="introductionButton" onclick="scrollToSection('introductionButton');">
+      INTRODUCTION
+    </button>
 
-  <button class="button button-grey" id="fromButton" onclick="scrollToSection('fromButton');">
-    I'M FROM
-  </button>
+    <button class="button button-grey" id="fromButton" onclick="scrollToSection('fromButton');">
+      I'M FROM
+    </button>
 
-  <button class="button button-grey" id="aboutMeButton" onclick="scrollToSection('aboutMeButton');">
-    MORE ABOUT ME
-  </button>
-</div>
+    <button class="button button-grey" id="aboutMeButton" onclick="scrollToSection('aboutMeButton');">
+      MORE ABOUT ME
+    </button>
+  </div>
 </header>
 <!-- end top section -->
 
@@ -27,7 +27,8 @@
   <!-- Body (SECTION 2/3) -->
   <section>
     <h2>Introduction</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.</p>
   </section>
 
   <section>
@@ -41,7 +42,7 @@
     <p class="space-maker">Things and stuff</p>
     <h3>Another cute header</h3>
     <p class="space-maker">And this is the stuff that goes in the header explanation blah blah.</h3>
-    <p></p>
+      <p></p>
   </section>
 </div>
 
