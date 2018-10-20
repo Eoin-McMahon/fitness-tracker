@@ -1,5 +1,6 @@
 <!--top section -->
 <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet" type="text/css" href=rel="stylesheet" type="text/css">
+
 <script src="{{url_for('static', filename = 'script.js')}}"></script>
 <script src="{{url_for('static', filename = 'leaflet/leaflet.js')}}"></script>
 <header class="masthead">
@@ -41,8 +42,8 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     });
     L.marker([55.8642, -4.2518]).addTo(map)
-     .bindPopup('Dom Smells')
-     .openPopup();
+      .bindPopup('Dom Smells')
+      .openPopup();
 
     // Now add the layer onto the map
     map.addLayer(layer);
@@ -76,3 +77,5 @@
   </ul>
   <p>Cover image via <a href="https://unsplash.com/photos/ISBPr3reT68" target=_Blank>Unsplash</a></p>
 </footer>
+
+<img src="{{url_for('static', filename = '0feab4928c8aabd9f36a673aadc40aaed6ddf724_hq.gif')}}" alt="orang male">
