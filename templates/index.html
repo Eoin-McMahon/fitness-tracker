@@ -1,16 +1,56 @@
-<html>
+<!--top section -->
+<link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet" type="text/css">
+<script src="script.js"></script>
 
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <title>
-        Orang Males
-    </title>
-</head>
+<header class="masthead">
+  <p class="masthead-intro">Hi, We:</p>
+  <h1 class="masthead-heading">OrangMales</h1>
 
-<body>
-    <h1>
-        This is a website for our team: Orang Males.
-    </h1>
-</body>
+  <div class="button-grey">
+    <button class="button button-grey" id="introductionButton" onclick="scrollToSection('introductionButton');">
+      INTRODUCTION
+    </button>
 
-</html>
+    <button class="button button-grey" id="fromButton" onclick="scrollToSection('fromButton');">
+      I'M FROM
+    </button>
+
+    <button class="button button-grey" id="aboutMeButton" onclick="scrollToSection('aboutMeButton');">
+      MORE ABOUT ME
+    </button>
+  </div>
+</header>
+<!-- end top section -->
+
+<!-- the div is used to apply the gradient -->
+<div class="gradient">
+  <!-- Body (SECTION 2/3) -->
+  <section>
+    <h2>Introduction</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.</p>
+  </section>
+
+  <section>
+    <h2>Header 1</h2>
+    <p class="space-maker">More lorem ipsum garbage cause we need to fill this with text and all</p>
+  </section>
+
+  <section>
+    <h2>More headers cause why not</h2>
+    <h3>Thiw is a smaller header. Cute</h3>
+    <p class="space-maker">Things and stuff</p>
+    <h3>Another cute header</h3>
+    <p class="space-maker">And this is the stuff that goes in the header explanation blah blah.</h3>
+      <p></p>
+  </section>
+</div>
+
+<!-- Footer (SECTION 3/3) -->
+<footer class="content-footer">
+  <p>Check out our Githubs:</p>
+  <ul class="social">
+    <li><a href="https://github.com/Eoin-McMahon/OrangMales" target=_Blank>Github</a></li>
+  </ul>
+  <p>Cover image via <a href="https://unsplash.com/photos/ISBPr3reT68" target=_Blank>Unsplash</a></p>
+</footer>
