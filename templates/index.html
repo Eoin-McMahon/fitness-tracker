@@ -43,22 +43,13 @@
 
   <!-- Updating the Name above the map -->
   <script>
-  var readXml=null;
   $('#xmlForm').submit(function(event) {
-    event.preventDefault();
-    var selectedFile = document.getElementById('input').files[0];
-    console.log(selectedFile);
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      readXml=e.target.result;
-      console.log(readXml);
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(readXml, "application/xml");
-      console.log(doc);
-      document.getElementById("text").innerHTML =
-      doc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
-    }
-    reader.readAsText(selectedFile);
+    try{
+      parseXML("input", "text");
+   }
+   catch(err){
+      document.getElementById("text").innerHTML = err.message;
+   }
   });
   </script>
 
