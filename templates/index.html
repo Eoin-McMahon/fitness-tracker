@@ -30,38 +30,42 @@
 <div class="gradient" onload="uploadFile()">
   <!-- Body (SECTION 2/3) -->
 
-   <!-- GPX File Upload -->
-   <div id='upload'>
-     <form id="xmlForm" name="xmlForm">
-       <p>
-         <h1 id="text">Upload your GPX File:</h1>
-       </p>
-       <input id="input" type="file">
-       <input type="submit" value="Upload" name="uploadFile">
-     </form>
-   </div>
+  <!-- GPX File Upload -->
+  <div id='upload'>
+    <form id="xmlForm" name="xmlForm">
+      <p>
+        <h1 id="text">Upload your GPX File:</h1>
+      </p>
+      <input id="input" type="file">
+      <input type="submit" value="Upload" name="uploadFile">
+    </form>
+  </div>
 
-   <script>
-       var readXml=null;
-       $('#xmlForm').submit(function(event) {
-           event.preventDefault();
-           var selectedFile = document.getElementById('input').files[0];
-           console.log(selectedFile);
-           var reader = new FileReader();
-           reader.onload = function(e) {
-               readXml=e.target.result;
-               console.log(readXml);
-               var parser = new DOMParser();
-               var doc = parser.parseFromString(readXml, "application/xml");
-               console.log(doc);
-               document.getElementById("text").innerHTML =
-                  doc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
-           }
-           reader.readAsText(selectedFile);
-       });
-    </script>
-  <div id="map" style="height: 500px; width: auto; align: center;"></div>
-  <script type="text/javascript">
+  <!-- Updating the Name above the map -->
+  <script>
+  var readXml=null;
+  $('#xmlForm').submit(function(event) {
+    event.preventDefault();
+    var selectedFile = document.getElementById('input').files[0];
+    console.log(selectedFile);
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      readXml=e.target.result;
+      console.log(readXml);
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(readXml, "application/xml");
+      console.log(doc);
+      document.getElementById("text").innerHTML =
+      doc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+    }
+    reader.readAsText(selectedFile);
+  });
+  </script>
+
+  <!-- Container to hold the map and averages -->
+  <div class="container">
+    <div id="map"></div>
+    <script type="text/javascript">
     // The first parameter are the coordinates of the center of the map
     // The second parameter is the zoom level
     var map = L.map('map').setView([55.8642, -4.2518], 11);
@@ -74,25 +78,27 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     });
     L.marker([55.8642, -4.2518]).addTo(map)
-      .bindPopup('Pinned Location')
-      .openPopup();
+    .bindPopup('Pinned Location')
+    .openPopup();
 
     // Now add the layer onto the map
     map.addLayer(layer);
-  </script>
+    </script>
 
-  <!-- Container to hold information such as heartrate, cadence...-->
-  <div class="container">
-    <ul>
-      <!-- Heartrate -->
-      <li><img src="../static/cardiogram.png"><h1>Heartrate:</li>
-      <!-- Cadence (steps per min?) -->
-      <li><img src="../static/jogging.png"><h1>Cadence:</li>
-      <!-- Altitude -->
-      <li><img src="../static/mountain.png"><h1>Altitude:</li>
-  </ul>
+    <!-- Container to hold information such as heartrate, cadence...-->
+    <div class="averagesContainercontainer">
+      <ul>
+        <!-- Heartrate -->
+        <li><img src="../static/cardiogram.png" alt="heartrate"><h1>Heartrate:</li>
+        <!-- Cadence (steps per min?) -->
+        <li><img src="../static/jogging.png" alt="cadence"><h1>Cadence:</li>
+        <!-- Altitude -->
+        <li><img src="../static/mountain.png" alt="altitude"><h1>Altitude:</li>
+      </ul>
+    </div>
   </div>
 
+  <div style="clear: both;">
   <!-- About Section -->
   <section id='about' label="About">
     <h2>About</h2>
@@ -118,6 +124,7 @@
     <p class="space-maker">And this is the stuff that goes in the header explanation blah blah.</h3>
       <p></p>
   </section>
+  </div>
 </div>
 
 <!-- Footer (SECTION 3/3) -->
