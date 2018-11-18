@@ -26,8 +26,11 @@
 <!-- end top section -->
 
 <!-- the div is used to apply the gradient -->
-<div class="gradient">
+<div class="gradient" onload="uploadFile()">
   <!-- Body (SECTION 2/3) -->
+  <h1 id="name">name</h1>
+  <input type="file" id="myFile" multiple size="50" onchange="uploadFile()">
+  <p id="uploadText"></p>
   <div id="map" style="height: 500px; width: auto; align: center;"></div>
   <script type="text/javascript">
     // The first parameter are the coordinates of the center of the map
