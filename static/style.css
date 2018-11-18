@@ -50,7 +50,7 @@ body {
 /* HEADER */
 .masthead {
   /* Layout declarations */
-  background: url("https://images.unsplash.com/photo-1519396899666-1ae8531ef17b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7faa83a1a1e1537492cb629a8526a8af&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb") no-repeat fixed center;
+  background: url("/running_girl.png") no-repeat fixed center;
   background-size: cover;
   padding: 1em 2em;
   border-top: 8px solid #EDEDED;
@@ -68,7 +68,7 @@ body {
 
 .masthead-heading {
   /* Typography declarations */
-  font-size: 10rem;
+  font-size: 9rem;
   /* Layout declarations */
   padding: 0;
   margin: 0 0 1em;
@@ -177,50 +177,50 @@ a:hover {
   .masthead {
     padding: 1em;
   }
-  
+
   .masthead-intro {
     font-size: 1.5rem;
   }
-  
+
   .masthead-heading {
     font-size: 4rem;
   }
-  
+
   /* BODY */
   .gradient {
     padding: 5em;
   }
-  
+
   h2 {
     font-size: 2rem;
   }
-  
+
   h3 {
     font-size: 1.5rem;
   }
-  
+
   section p {
     font-size: 1rem;
   }
-  
+
   /* FOOTER */
   .content-footer {
     padding: 4em;
   }
-  
+
   .social > li {
   /* Layout declarations */
   display: block;
   margin-right: 0;
   }
-  
+
   a {
     line-height: 3em;
   }
-  
+
   .content-footer p a {
     line-height: 0;
-  } 
+  }
 }
 
   /* FOOTER */
