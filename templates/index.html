@@ -2,6 +2,7 @@
 <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet" type="text/css" href=rel="stylesheet" type="text/css">
 
 <script src="{{url_for('static', filename = 'script.js')}}"></script>
+<script src="{{url_for('static', filename = 'parse.js')}}"></script>
 <script src="{{url_for('static', filename = 'leaflet/leaflet.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <header class="masthead">
@@ -45,7 +46,7 @@
   <script>
   $('#xmlForm').submit(function(event) {
     try{
-      parseXML("input", "text");
+      parseXML(event, "input", "text");
    }
    catch(err){
       document.getElementById("text").innerHTML = err.message;
