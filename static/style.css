@@ -46,6 +46,27 @@ body {
 
 }
 
+/* Analytics Container */
+.container {
+  background-color: #2e2e2d;
+  text-align: center;
+  min-width: 150px;
+  width: 60%;
+  height: auto;
+
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border: none;
+  border-radius: 10px 10px;
+  margin: 10px auto;
+  clear: all;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 2em;
+  padding-right: 2em;
+}
 
 /* HEADER */
 .masthead {
@@ -123,7 +144,7 @@ section p {
 .content-footer {
   /* Layout declarations */
   background: #000000;
-  padding: 10em;
+  padding: 5em;
   border-bottom: 8px solid #EDEDED;
 }
 
