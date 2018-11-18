@@ -7,9 +7,9 @@
 <header class="masthead">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
-  <!-- <p class="masthead-intro">Hi, We:</p> -->
   <h1 class="masthead-heading">KeepFit Tracker</h1>
 
+  <!-- Nav buttons -->
   <div class="button-grey">
     <button class="button button-grey" id="aboutButton" onclick="scrollToSection('about');">
       ABOUT
@@ -18,17 +18,13 @@
     <button class="button button-grey" id="howtoButton" onclick="scrollToSection('howto');">
       HOW TO USE
     </button>
-
-    <button class="button button-grey" id="section2Button" onclick="scrollToSection('section2');">
-      SECTION 2
-    </button>
   </div>
 </header>
 <!-- end top section -->
 
 <!-- the div is used to apply the gradient -->
+<!-- Body (SECTION 2/3) -->
 <div class="gradient" onload="uploadFile()">
-  <!-- Body (SECTION 2/3) -->
 
   <!-- GPX File Upload -->
   <div id='upload'>
@@ -54,7 +50,8 @@
   </script>
 
   <!-- Container to hold the map and averages -->
-  <div class="container">
+  <!-- <div class="container"> -->
+
     <div id="map"></div>
     <script type="text/javascript">
     // The first parameter are the coordinates of the center of the map
@@ -80,44 +77,34 @@
     <div class="averagesContainercontainer">
       <ul>
         <!-- Heartrate -->
-        <li><img src="../static/cardiogram.png" alt="heartrate"><h1>Heartrate:</li>
+        <li><img src="../static/icons/cardiogram.png" alt="heartrate"><h1>Heartrate:</li>
         <!-- Cadence (steps per min?) -->
-        <li><img src="../static/jogging.png" alt="cadence"><h1>Cadence:</li>
+        <li><img src="../static/icons/jogging.png" alt="cadence"><h1>Cadence:</li>
         <!-- Altitude -->
-        <li><img src="../static/mountain.png" alt="altitude"><h1>Altitude:</li>
+        <li><img src="../static/icons/mountain.png" alt="altitude"><h1>Altitude:</li>
       </ul>
     </div>
-  </div>
+  <!-- </div> -->
 
   <!-- div stores the about, how to and section 2 -->
   <div style="clear: both; padding-top: 10px;">
-  <!-- About Section -->
-  <section id='about' label="About">
-    <h2>About</h2>
-    <p><h3>KeepFit is a tool which allows you to retrace your workout steps! You can view where you've visited, and if the data is available your heartrate, cadence and altitude at that point</h3></p>
-  </section>
+
+    <!-- About Section -->
+    <section id='about' label="About">
+      <h2>About</h2>
+      <p><h3>KeepFit is a tool which allows you to retrace your workout steps! You can view where you've visited, and if the data is available your heartrate, cadence and altitude at that point</h3></p>
+    </section>
 
 
-  <!-- Section 1 -->
-  <section id='howto' label="howto">
-    <h2>How to use KeepFit</h2>
-    <p class="space-maker">Simply select the GPX file from your device and upload it here, your route will be displayed on map above, any other data is displayed below the map. Easy!</p>
-  </section>
+    <!-- How To Section -->
+    <section id='howto' label="howto">
+      <h2>How to use KeepFit</h2>
+      <p class="space-maker">Simply select the GPX file from your device and upload it here, your route will be displayed on map above, any other data is displayed below the map. Easy!</p>
+    </section>
 
-
-  <!-- Section 2 -->
-  <section id='section2' label="section2">
-    <h2>Section 2</h2>
-
-    <h3>This is a smaller header. Cute</h3>
-    <p class="space-maker">Things and stuff</p>
-
-    <h3>Another cute header</h3>
-    <p class="space-maker">And this is the stuff that goes in the header explanation blah blah.</h3>
-      <p></p>
-  </section>
   </div>
 </div>
+<!-- End of body div -->
 
 <!-- Footer (SECTION 3/3) -->
 <footer class="content-footer">
@@ -132,4 +119,4 @@
   </div>
 </footer>
 
-<img src="{{url_for('static', filename = '0feab4928c8aabd9f36a673aadc40aaed6ddf724_hq.gif')}}" alt="orang male" style="margin-left: auto;">
+<img src="{{url_for('static', filename = 'orang.gif')}}" alt="orang male" style="margin-left: auto;">

@@ -53,7 +53,7 @@ body {
 .averagesContainer {
   background-color: #2e2e2d;
   text-align: center;
-  min-width: 50px;
+  min-width: 150px;
   width: 60%;
   height: auto;
 
@@ -64,15 +64,12 @@ body {
   border-radius: 10px 10px;
   margin: 10px auto;
   clear: all;
-
-  float: right;
 }
 
 #map {
   height: 500px;
   width: 70%;
   align: center;
-  float: left;
 }
 
 ul {
@@ -84,7 +81,7 @@ ul {
 /* HEADER */
 .masthead {
   /* Layout declarations */
-  background: url(running_2k.jpg) no-repeat fixed center;
+  background: url(header.jpg) no-repeat fixed center;
   background-size: cover;
   padding: 1em 2em;
   border-top: 8px solid #EDEDED;
