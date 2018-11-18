@@ -4,15 +4,63 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>OrangFit</title>
   <meta name="description" content="OrangFit">
   <meta name="author" content="OrangMales">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
+  <script> src="js/script.js"</script>
 </head>
 
 <body>
+  <div class="section1">
+  <header>
+      <div class="container">
+          <nav>
+                <input type="checkbox" id="nav" class="hidden">
+                <label for="nav" class="nav-btn">
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                </label>
+                <div class="logo">
+                      <a href="#">OrangFit</a>
+                </div>
+                <div class="nav-wrapper">
+                      <ul>
+                            <li><a href="#">Upload</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Heartbeat</a></li>
+                            <li><a href="#">Analysis</a></li>
+                      </ul>
+                </div>
+          </nav>
+    </div>
+  </header>
+
+
+  <div class="wrapper">
+      <div class="file-upload">
+        <input type="file" />
+        <i class="fa fa-arrow-up"></i>
+      </div>
+  </div>
+  <div class="uploaded">
+    <p>Uploaded File</p>
+  </div>
+</div>
+
+
+  <div id="mapid"></div>
+
+
   <script src="js/script.js"></script>
 </body>
 
