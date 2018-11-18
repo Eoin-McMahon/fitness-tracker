@@ -179,6 +179,9 @@ nav ul li a:hover {
       .nav-btn i:nth-child(3) {
             margin-top: 4px;
       }
+      #generalAnalysis ul li{
+          display: block;
+      }
 }
  
 #nav:checked + .nav-btn {
@@ -276,4 +279,32 @@ color:#2590EB;
 }
 
 
-#mapid { height: 100%; }
+.mapContainer { height: 100%; }
+
+.mapContainer #mapid
+{
+    float: left;
+    height: 60%;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.mapContainer #generalAnalysis
+{
+    float: right;
+    height: 40%;
+    width: 40%;
+    margin: 0 auto;
+}
+
+#generalAnalysis ul li
+{
+    text-decoration: underline;
+    margin-bottom: 35%;
+    list-style: none;
+}
+#generalAnalysis ul li i 
+{
+    text-align: center;
+    size: 200px;
+}
