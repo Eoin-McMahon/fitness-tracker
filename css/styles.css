@@ -183,7 +183,7 @@ nav ul li a:hover {
           display: block;
       }
 }
- 
+
 #nav:checked + .nav-btn {
       transform: rotate(45deg);
 }
@@ -279,14 +279,84 @@ color:#2590EB;
 }
 
 
-.mapData { 
-    width: 100%;
-    height: 50%; 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
-    text-align: center;
+@media screen and (max-width: 862px){
+      .mapData { 
+      width: 100%;
+      height: 50%; 
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 2fr 1fr 1fr 2fr 1fr 1fr 2fr;
+      grid-auto-flow: column;
+      text-align: center;
+      }
+      .heartbeat 
+      {
+            margin: 10%;
+            
+            grid-row: 1;
+
+      }
+      .hearticon
+      {      
+            grid-row: 2;
+
+      }
+      .heartdata
+      {
+            
+            grid-row: 3;
+            font-size: 50px;
+            color: green;
+
+      }
+      .cadence
+      {
+            margin: 10%;
+            grid-row: 4;
+      }
+      .cadenceicon
+      {      
+            grid-row: 5;
+
+      }
+      .cadencedata
+      {
+            grid-row: 6;
+            font-size: 50px;
+            color: purple;
+
+      }
+
+      .distance{
+            margin: 10%;
+            grid-row: 7;
+
+      }
+
+      .distanceicon
+      {      
+            grid-row: 8;
+
+      }
+      .distancedata
+      {
+            grid-row: 9;
+            font-size: 50px;
+            color: blue;
+
+      }
 }
+
+
+.mapData { 
+      width: 100%;
+      height: 50%; 
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 2fr;
+      grid-auto-flow: column;
+      text-align: center;
+      }
 .heartbeat 
 {
       margin: 10%;
@@ -353,4 +423,11 @@ color:#2590EB;
     height: 50%;
     width: 100%;
     margin: 0 auto;
+}
+
+
+.chart
+{
+      width: 100%;
+      height: 100%;
 }
