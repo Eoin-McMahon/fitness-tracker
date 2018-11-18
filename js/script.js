@@ -1,13 +1,13 @@
 window.onload = function(){ 
 
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var mymap = L.map('mapid').setView([55.8642, -4.2518],10);
 
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
+    maxZoom: 11,
     id: 'mapbox.streets',
-    accessToken: 'your.mapbox.access.token'
+    accessToken: 'pk.eyJ1IjoiaWpvZSIsImEiOiJjam9uajBxODAwdGRnM2tvMng3YXd2bm1kIn0.cC4_To2GfWyLa_rPrK0Rfw'
 }).addTo(mymap);
 
 
