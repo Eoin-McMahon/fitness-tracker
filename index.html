@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
   <script> src="js/script.js"</script>
+
 </head>
 
 <body>
@@ -59,25 +60,21 @@
   </div>
 </div>
 
-<div class="mapContainer">
-    <div id="mapid">
+  <div id="mapid" style="background-color: black;"></div>    
 
-    </div>
-    <div id="generalAnalysis">
-      <ul>
-        <li><h1>Average Heartbeat</h1></li>
-        <i class="fas fa-heartbeat fa-5x"></i>
-        <li><h1>Average Cadence</h1></li>
-        <i class="fas fa-running fa-5x"></i>
-        <li><h1>Total Distance</h1></li>
-        <i class="fas fa-ruler-horizontal fa-5x"></i>
-      </ul>
-      
-    </div> 
-</div>
+  <div class="mapData">
+    <div class="heartbeat">HEARTBEAT</div>
+    <div class="hearticon"> <i class="fas fa-heartbeat fa-5x"></i></div>
+    <div class="heartdata"> 77BPM</div>
+    <div class="cadence">CADENCE</div>
+    <div class="cadenceicon"> <i class="fas fa-running fa-5x"></i> </div>
+    <div class="cadencedata">12m/s</div>
+    <div class="distance">DISTANCE</div>
+    <div class="distanceicon"> <i class="fas fa-ruler-horizontal fa-5x"></i> </div>
+    <div class="distancedata">3.2km </div>
+  </div>
 
 
-  <script src="js/script.js"></script>
 </body>
 
 
