@@ -29,6 +29,7 @@
 <!-- the div is used to apply the gradient -->
 <div class="gradient" onload="uploadFile()">
   <!-- Body (SECTION 2/3) -->
+  <h1 id="text">no upload</h1>
   <form id="xmlForm" name="xmlForm">
        <input id="input" type="file"> <input type="submit">
    </form>
@@ -45,6 +46,8 @@
                var parser = new DOMParser();
                var doc = parser.parseFromString(readXml, "application/xml");
                console.log(doc);
+               document.getElementById("text").innerHTML =
+                  doc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
            }
            reader.readAsText(selectedFile);
        });
