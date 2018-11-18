@@ -29,10 +29,18 @@
 <!-- the div is used to apply the gradient -->
 <div class="gradient" onload="uploadFile()">
   <!-- Body (SECTION 2/3) -->
-  <h1 id="text">no upload</h1>
-  <form id="xmlForm" name="xmlForm">
-       <input id="input" type="file"> <input type="submit">
-   </form>
+
+   <!-- GPX File Upload -->
+   <div id='upload'>
+     <form id="xmlForm" name="xmlForm">
+       <p>
+         <h1 id="text">Upload your GPX File:</h1>
+       </p>
+       <input id="input" type="file">
+       <input type="submit" value="Upload" name="uploadFile">
+     </form>
+   </div>
+
    <script>
        var readXml=null;
        $('#xmlForm').submit(function(event) {
@@ -72,15 +80,6 @@
     // Now add the layer onto the map
     map.addLayer(layer);
   </script>
-
-  <!-- GPX File Upload -->
-  <div id='upload'>
-    <form style="clear:both;" action="" method="POST" enctype="multipart/form-data">
-      Upload your GPX File:
-      <input type="file" value = "Select File" name="selectFile">
-      <input type="submit" value="Upload" name="uploadFile ">
-    </form>
-  </div>
 
   <!-- About Section -->
   <section id='about' label="About">
