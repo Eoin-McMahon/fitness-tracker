@@ -10,16 +10,16 @@
   <h1 class="masthead-heading">KeepFit Tracker</h1>
 
   <div class="button-grey">
-    <button class="button button-grey" id="introductionButton" onclick="scrollToSection('introductionButton');">
-      INTRODUCTION
+    <button class="button button-grey" id="introductionButton" onclick="scrollToSection('about');">
+      ABOUT
     </button>
 
-    <button class="button button-grey" id="fromButton" onclick="scrollToSection('fromButton');">
-      I'M FROM
+    <button class="button button-grey" id="fromButton" onclick="scrollToSection('section1');">
+      SECTION 1
     </button>
 
-    <button class="button button-grey" id="aboutMeButton" onclick="scrollToSection('aboutMeButton');">
-      MORE ABOUT ME
+    <button class="button button-grey" id="aboutMeButton" onclick="scrollToSection('section2');">
+      SECTION 2
     </button>
   </div>
 </header>
@@ -28,7 +28,7 @@
 <!-- the div is used to apply the gradient -->
 <div class="gradient">
   <!-- Body (SECTION 2/3) -->
-  <div id="map" style="height: 500px;"></div>
+  <div id="map" style="height: 500px; width: auto; align: center;"></div>
   <script type="text/javascript">
     // The first parameter are the coordinates of the center of the map
     // The second parameter is the zoom level
@@ -42,32 +42,49 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     });
     L.marker([55.8642, -4.2518]).addTo(map)
-      .bindPopup('Dom Smells')
+      .bindPopup('Pinned Location')
       .openPopup();
 
     // Now add the layer onto the map
     map.addLayer(layer);
   </script>
-  <section>
-    <h2>Introduction</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua.</p>
+
+  <div id='upload'>
+    <form style="clear:both;" action="" method="POST" enctype="multipart/form-data">
+      Upload your GPX File:
+      <input type="file" value = "Select File" name="selectFile">
+      <input type="submit" value="Upload" name="uploadFile ">
+    </form>
+  </div>
+
+  <!-- About Section -->
+  <section id='about' label="About">
+    <h2>About</h2>
+    <p><h3>KeepFit is a tool which allows you to retrace your workout steps! You can view where you've visited, and if the data is available your heartrate, cadence and altitude at that point</h3></p>
   </section>
 
-  <section>
-    <h2>Header 1</h2>
-    <p class="space-maker">More lorem ipsum garbage cause we need to fill this with text and all</p>
+
+  <!-- Section 1 -->
+  <section id='section1' label="section1">
+    <h2>How to use KeepFit</h2>
+    <p class="space-maker">Simply select the GPX file from your device and upload it here, your route will be displayed on map above, any other data is displayed below the map. Easy!</p>
   </section>
 
-  <section>
-    <h2>More headers cause why not</h2>
+
+  <!-- Section 2 -->
+  <section id='section2' label="section2">
+    <h2>Section 2</h2>
+
     <h3>Thiw is a smaller header. Cute</h3>
     <p class="space-maker">Things and stuff</p>
+
     <h3>Another cute header</h3>
     <p class="space-maker">And this is the stuff that goes in the header explanation blah blah.</h3>
       <p></p>
   </section>
 </div>
+
+
 
 <!-- Footer (SECTION 3/3) -->
 <footer class="content-footer">
@@ -75,7 +92,6 @@
   <ul class="social">
     <li><a href="https://github.com/Eoin-McMahon/OrangMales" target=_Blank>Github</a></li>
   </ul>
-  <p>Cover image via <a href="https://unsplash.com/photos/ISBPr3reT68" target=_Blank>Unsplash</a></p>
 </footer>
 
 <img src="{{url_for('static', filename = '0feab4928c8aabd9f36a673aadc40aaed6ddf724_hq.gif')}}" alt="orang male">
