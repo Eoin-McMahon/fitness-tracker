@@ -357,6 +357,15 @@ color:#2590EB;
       grid-auto-flow: column;
       text-align: center;
       }
+
+.sectiontitle 
+{
+      font-size: 50px;
+      text-align: center;
+      text-shadow: 0 2px white;
+      font-weight: bold;
+      color: #b8bec5;
+}
 .heartbeat 
 {
       margin: 10%;
@@ -431,4 +440,17 @@ color:#2590EB;
       width: 50%;
       height:auto;
       margin-left: 10%;
+      float:left;
+}
+
+.chartdata
+{
+
+      float:left;
+}
+.chartdata ul li{
+      font-size: 40px;
+      font-weight: bold;
+      list-style-type: none;
+      margin: 30% auto;      
 }
