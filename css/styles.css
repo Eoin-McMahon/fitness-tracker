@@ -428,6 +428,7 @@ color:#2590EB;
 
 .chart
 {
-      width: 100%;
-      height: 100%;
+      width: 50%;
+      height:auto;
+      margin-left: 10%;
 }
