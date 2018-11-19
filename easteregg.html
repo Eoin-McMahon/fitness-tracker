@@ -5,7 +5,38 @@
     <img src="./Mandarin.gif" alt="OrangMale" style="z-index: 10000000;">
 </div>
 
-<h1 style="color:white; text-align: center;">You have been greated by the Ó̱̹͔͈͈̽̍̈́́́̉̋̄͡Ṙ̴̥̯̻͈̠̮̅̽͑͗̕̕A̧̛̭͍̦̞̝̘̅͆͒̾̌͂͢͠͡N̷̫̥̠͇̬͉̙̯̂̓̑̔́̿̃͆̆Ģ̮̪̪̆̅̃͛͑̎͟Ḿ̸̧̲̣̩̤͍̔͂̎̄̅̈́͝A̗̭̗̙͕̰͑́̀̍̈́̓͟͡͝L̡̢̨̜̪̓̂͗̒̓̚̕͟͝Ę̡̖͔̭̏̍̿̅̚</h1>
+
+<style>
+    @keyframes rubberBand {
+  0% {transform: scale(1);}
+  30% {transform: scaleX(1.25) scaleY(0.75);}
+  40% {transform: scaleX(0.75) scaleY(1.25);}
+  60% {transform: scaleX(1.15) scaleY(0.85);}
+  100% {transform: scale(1);}
+}
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+.rubberBand {
+  animation-name: rubberBand;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+}
+</style>
+
+<h1 class="animated pulse"style="color:white; text-align: center; ">You are worthy and thus have been greeted by </h1>
+
+<h1 class="animated rubberBand"style="color:white; font-size: 70px;text-align: center;">Ó̱̹͔͈͈̽̍̈́́́̉̋̄͡Ṙ̴̥̯̻͈̠̮̅̽͑͗̕̕A̧̛̭͍̦̞̝̘̅͆͒̾̌͂͢͠͡N̷̫̥̠͇̬͉̙̯̂̓̑̔́̿̃͆̆Ģ̮̪̪̆̅̃͛͑̎͟Ḿ̸̧̲̣̩̤͍̔͂̎̄̅̈́͝A̗̭̗̙͕̰͑́̀̍̈́̓͟͡͝L̡̢̨̜̪̓̂͗̒̓̚̕͟͝Ę̡̖͔̭̏̍̿̅̚</h1>
 
 
 <canvas id="screen" style="
@@ -13,13 +44,16 @@ background-color: white;
 position: absolute;
 top: 0px;
 left: 0px;
-z-index: -100;"></canvas><script>
+z-index: -100;"></canvas>
+<script>
     // Code by Matheus Lin
 // While developing a version of "Chain Reaction", I ended up on
 // those "fireworks-like" things. I leave it to you here.
 // Chain Reaction coming up next!
 
 // Configs
+if (confirm('Are you a worthy humanoid being?')) {
+    // Save it!
 
 var screenWidth = window.innerWidth;
 var screenHeight = window.innerHeight;
@@ -285,5 +319,7 @@ var controller = new Controller();
 controller.init();
 requestAnimationFrame(controller.animation);
 
+}
+else {}
 
 </script>
