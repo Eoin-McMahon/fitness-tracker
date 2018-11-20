@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
-  
+
 </head>
 <body>
-    
+
 
   <div class="section1">
   <header>
@@ -50,21 +50,23 @@
 
 
   <div class="wrapper">
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript" src="js/gpxparse.js"></script>
       <div class="file-upload">
         <!-- PARSING FUNCTION SHOULD BE CALLED HERE, this is just a test function -->
-          <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-          <script type="text/javascript" src="js/gpxparse.js"></script>
+
         <input type="file" id='fileinput'/>
         <i class="fa fa-arrow-up"></i>
       </div>
   </div>
   <div class="uploaded">
-    <p>Uploaded File</p>
+    <p id="filename">Uploaded File</p>
   </div>
+  <button id="submit">Submit</button>
 </div>
 
-  <div id="mapid"></div>   
-  <h1 class="sectiontitle">Averages</h1> 
+  <div id="mapid"></div>
+  <h1 class="sectiontitle">Averages</h1>
   <div class="mapData">
     <div class="heartbeat">HEARTBEAT</div>
     <div class="hearticon"> <i class="fas fa-heartbeat fa-5x" style="color: #b8bec5;"></i></div>
