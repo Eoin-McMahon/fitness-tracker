@@ -31,19 +31,55 @@ function getAlert() {
 $(document).ready(function(){
     // getAlert();
 
-  $("#dvContent").append("<ul></ul>");
+  // $("#dvContent").append("<ul></ul>");
   $.ajax({
     type: "GET",
     url: "/assets/Lugano.gpx",
     dataType: "xml",
     success: function(xml){
+
+    var times = [];
+    var heartRates = [];
+    var elevations = [];
+    var cadences = [];
     $(xml).find('trk').each(function(){
+      console.log("Finding name...");
       var name = $(this).find('name').text();
       var type = $(this).find('type').text();
-      var heartbeats = jQuery.makeArray();
-      console.log(name);
       $('#filename').text(name);
     });
+
+    // var heartrates = jQuery.makeArray();
+    var numTrkpts = 0;
+    var heartRateSum = 0;
+    console.log("Aquiring Stats...");
+    $(xml).find('trkpt').each(function(){
+      times.push($(this).find('time').text());
+      heartRates.push($(this).find('hr').text());
+      elevations.push($(this).find('ele').text());
+      cadences.push($(this).find('cad').text());
+      // console.log("HeartRate: " + heartrate);
+      numTrkpts++;
+    });
+    var startTime = times[0];
+    var endTime = times[numTrkpts-1];
+    var year = startTime[0]+startTime[1]+startTime[2]+startTime[3];
+    var month = startTime[5]+startTime[6];
+    var day = startTime[8]+startTime[9];
+    // var hours = parseInt(endTime[11]+endTime[12]) - parseInt(startTime[11]+startTime[12]);
+    // var mins = parseInt(endTime[14]+endTime[15]) - parseInt(startTime[14]+startTime[15]);
+
+    console.log("Trkpts: " + numTrkpts);
+    // console.log("Cadences: " + cadences);
+    // console.log("HeartRates: " + heartRates);
+    // console.log("Elevations: " + elevations);
+    console.log("Start: " + startTime);
+    console.log("End: " + endTime);
+    console.log(hours);
+    console.log("Calculating Avg HR..");
+    var avgHeartRate = heartRateSum / numTrkpts;
+    $('#avgHR').text(avgHeartRate);
+
   },
   error: function() {
     alert("An error occurred while processing XML file.");
