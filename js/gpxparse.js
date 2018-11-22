@@ -39,9 +39,9 @@ $(document).ready(function(){
     success: function(xml){
 
     var times = [];
-    var heartRates = [];
+    // var heartRates = [];
     var elevations = [];
-    var cadences = [];
+    // var cadences = [];
     $(xml).find('trk').each(function(){
       console.log("Finding name...");
       var name = $(this).find('name').text();
@@ -52,12 +52,13 @@ $(document).ready(function(){
     // var heartrates = jQuery.makeArray();
     var numTrkpts = 0;
     var heartRateSum = 0;
+    var cadSum = 0;
     console.log("Aquiring Stats...");
     $(xml).find('trkpt').each(function(){
       times.push($(this).find('time').text());
-      heartRates.push($(this).find('hr').text());
+      heartRateSum += parseInt($(this).find('ns3\\:hr').text());
       elevations.push($(this).find('ele').text());
-      cadences.push($(this).find('cad').text());
+      cadSum += parseInt($(this).find('ns3\\:cad').text());
       // console.log("HeartRate: " + heartrate);
       numTrkpts++;
     });
@@ -70,15 +71,17 @@ $(document).ready(function(){
     // var mins = parseInt(endTime[14]+endTime[15]) - parseInt(startTime[14]+startTime[15]);
 
     console.log("Trkpts: " + numTrkpts);
-    // console.log("Cadences: " + cadences);
-    // console.log("HeartRates: " + heartRates);
     // console.log("Elevations: " + elevations);
     console.log("Start: " + startTime);
     console.log("End: " + endTime);
-    console.log(hours);
-    console.log("Calculating Avg HR..");
+    // console.log(hours);
     var avgHeartRate = heartRateSum / numTrkpts;
-    $('#avgHR').text(avgHeartRate);
+    var avgCad = cadSum / numTrkpts;
+    console.log("Avg HeartRates: " + Math.round(avgHeartRate));
+    console.log("Avg Cad: " + Math.round(avgCad));
+    $('#avgHR').text(Math.round(avgHeartRate) + "BPM");
+    $('#avgCad').text(Math.round(avgCad) + "SPM");
+
 
   },
   error: function() {
