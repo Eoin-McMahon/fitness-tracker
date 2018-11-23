@@ -41,11 +41,13 @@ $(document).ready(function(){
     var times = [];
     // var heartRates = [];
     var elevations = [];
+    var points = [];
     // var cadences = [];
     $(xml).find('trk').each(function(){
       console.log("Finding name...");
       var name = $(this).find('name').text();
       var type = $(this).find('type').text();
+      // points = $(this).find('trkpt').text();
       $('#filename').text(name);
     });
 
@@ -53,10 +55,21 @@ $(document).ready(function(){
     var numTrkpts = 0;
     var heartRateSum = 0;
     var cadSum = 0;
+    var maxHR = 0;
+    var minHR = 0;
     console.log("Aquiring Stats...");
     $(xml).find('trkpt').each(function(){
       times.push($(this).find('time').text());
-      heartRateSum += parseInt($(this).find('ns3\\:hr').text());
+      var hr = $(this).find('ns3\\:hr').text();
+
+      if(parseInt(hr) > maxHR){
+         maxHR = parseInt(hr);
+      }
+
+      if((parseInt(hr) < minHR) || minHR == 0){
+         minHR = parseInt(hr);
+      }
+      heartRateSum += parseInt(hr);
       elevations.push($(this).find('ele').text());
       cadSum += parseInt($(this).find('ns3\\:cad').text());
       // console.log("HeartRate: " + heartrate);
@@ -69,7 +82,7 @@ $(document).ready(function(){
     var day = startTime[8]+startTime[9];
     // var hours = parseInt(endTime[11]+endTime[12]) - parseInt(startTime[11]+startTime[12]);
     // var mins = parseInt(endTime[14]+endTime[15]) - parseInt(startTime[14]+startTime[15]);
-
+    console.log("Min HR: " + minHR);
     console.log("Trkpts: " + numTrkpts);
     // console.log("Elevations: " + elevations);
     console.log("Start: " + startTime);
@@ -79,9 +92,11 @@ $(document).ready(function(){
     var avgCad = cadSum / numTrkpts;
     console.log("Avg HeartRates: " + Math.round(avgHeartRate));
     console.log("Avg Cad: " + Math.round(avgCad));
+    console.log("Points: " +points);
     $('#avgHR').text(Math.round(avgHeartRate) + "BPM");
     $('#avgCad').text(Math.round(avgCad) + "SPM");
-
+    $('#maxHr').text("Max Heartrate: " + maxHR + "BPM");
+    $('#minHr').text("Min Heartrate: " + minHR + "BPM");
 
   },
   error: function() {
