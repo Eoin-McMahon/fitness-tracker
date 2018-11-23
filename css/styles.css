@@ -439,15 +439,15 @@ color:#2590EB;
 .chart
 {
       width: 40%;
-      height:auto;
+      height:10%;
       margin-left: 5%;
       float:left;
-      padding-bottom: 30px;
+      /*padding-bottom: 30px;*/
 }
 
 .chartdata
 {
-      float:left;
+      align-items: center;
 }
 .chartdata ul li{
       font-size: 20px;

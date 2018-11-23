@@ -1,33 +1,3 @@
-function getAlert() {
-    $('input[type="file"]').change(function(){
-        alert("A file has been selected.");
-        // event.preventDefault();
-        //    var selectedFile = document.getElementById('fileinput').files[0];
-        //    console.log(selectedFile);
-        //    var reader = new FileReader();
-        //    reader.onload = function(e) {
-        //        var readXml=e.target.result;
-        //        console.log(readXml);
-        //        var parser = new DOMParser();
-        //        var doc = parser.parseFromString(readXml, "application/xml");
-        //        console.log(doc);
-        //    }
-        //    reader.readAsText(selectedFile);
-
-    });
-
-    $('#submit').click(function(){
-      console.log("parsing");
-      var selectedFile = document.getElementById('fileinput').files[0];
-      xmlDoc = $.parseXML( selectedFile ),
-       $xml = $( xmlDoc ),
-       $name = $xml.find( "name" ).text();
-       console.log(selectedFile);
-
-      document.getElementById('filename').innerHTML = $name;
-   })
-}
-
 $(document).ready(function(){
     // getAlert();
 
@@ -61,6 +31,7 @@ $(document).ready(function(){
     //distance Stats
     var lats = [];
     var lons = [];
+    var heartrates = []
     console.log("Aquiring Stats...");
 
     //Aquires the appropriate stats from each trkpt
@@ -71,7 +42,7 @@ $(document).ready(function(){
       elevations.push($(this).find('ele').text());
 
       var hr = $(this).find('ns3\\:hr').text();
-
+      heartrates.push(hr);
       //calculates maxHR
       if(parseInt(hr) > maxHR){
          maxHR = parseInt(hr);
@@ -145,11 +116,54 @@ $(document).ready(function(){
     $('#minHr').text("Min Heartrate(BPM):  " + minHR);
     $('#tt').text("Time Taken: " + hours + " hours " + minutes + " minutes and " + seconds + " seconds");
     $('#disRan').text("Distance Run(km): " + totalDis.toFixed(2));
-
+    createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
+    createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
   },
   error: function() {
     alert("An error occurred while processing XML file.");
   }
   });
 
+
 });
+
+function createChart(numTrkpts, data, chartTitle, div, x, y){
+   console.log("Creating Chart...")
+   var x_axis = [];
+
+   for(var i=0; i<numTrkpts; i++){
+      x_axis.push(i/100);
+   }
+
+   console.log("X_Axis: " + x_axis);
+
+   var trace = {
+      x: x_axis,
+      y: data,
+      mode: 'lines',
+      type: 'scatter'
+   };
+   var data = [trace];
+   var layout = {
+      xaxis: {
+          title: x,
+          titlefont: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        },
+     yaxis: {
+       title: y,
+       titlefont: {
+         family: 'Courier New, monospace',
+         size: 18,
+         color: '#7f7f7f'
+       }
+    },
+      title: chartTitle
+   };
+   console.log("Plotting...");
+   Plotly.newPlot(div, data, layout);
+
+}
