@@ -39,16 +39,16 @@ $(document).ready(function(){
     success: function(xml){
 
     var times = [];
-    // var heartRates = [];
     var elevations = [];
     var points = [];
-    // var cadences = [];
+
+    //aquires name and type of each activity
     $(xml).find('trk').each(function(){
-      console.log("Finding name...");
+      console.log("Finding name and type...");
       var name = $(this).find('name').text();
       var type = $(this).find('type').text();
-      // points = $(this).find('trkpt').text();
-      $('#filename').text(name);
+      $('#filename').text(name + " - " + type);
+
     });
 
     //body stats
@@ -62,26 +62,32 @@ $(document).ready(function(){
     var lats = [];
     var lons = [];
     console.log("Aquiring Stats...");
+
+    //Aquires the appropriate stats from each trkpt
     $(xml).find('trkpt').each(function(){
       times.push($(this).find('time').text());
       lats.push($(this).attr('lat'));
       lons.push($(this).attr('lon'));
+      elevations.push($(this).find('ele').text());
 
       var hr = $(this).find('ns3\\:hr').text();
 
+      //calculates maxHR
       if(parseInt(hr) > maxHR){
          maxHR = parseInt(hr);
       }
 
+      //calculates minHR
       if((parseInt(hr) < minHR) || minHR == 0){
          minHR = parseInt(hr);
       }
+
+      //heartRateSum and cadSum used for avgs
       heartRateSum += parseInt(hr);
-      elevations.push($(this).find('ele').text());
       cadSum += parseInt($(this).find('ns3\\:cad').text());
-      // console.log("HeartRate: " + heartrate);
       numTrkpts++;
     });
+
     //time stats
     var startTime = new Date(times[0]);
     var endTime = new Date(times[numTrkpts-1]);
@@ -98,6 +104,7 @@ $(document).ready(function(){
     //distance stats
     var totalDis = 0;
     var radius = 6371;
+    //function used to caculate totalDis
     for(var i=0; i<lats.length; i++ ){
       if(i != (lats.length - 1)){
          var dLat = (lats[i+1] - lats[i]) * (3.14159265359/180);
@@ -110,10 +117,9 @@ $(document).ready(function(){
          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
          totalDis += (radius * c);
       }
-
-
    }
 
+    //outputting on console
     console.log("Min HR: " + minHR);
     console.log("Trkpts: " + numTrkpts);
     // console.log("Elevations: " + elevations);
@@ -132,6 +138,7 @@ $(document).ready(function(){
     console.log("Avg Cad: " + Math.round(avgCad));
     console.log("Points: " + points);
 
+    //updating html variables
     $('#avgHR').text(Math.round(avgHeartRate) + " BPM");
     $('#avgCad').text(Math.round(avgCad) + " SPM");
     $('#maxHr').text("Max Heartrate(BPM):  " + maxHR);
