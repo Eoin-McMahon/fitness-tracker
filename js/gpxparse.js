@@ -101,10 +101,10 @@ $(document).ready(function(){
     console.log("Avg HeartRates: " + Math.round(avgHeartRate));
     console.log("Avg Cad: " + Math.round(avgCad));
     console.log("Points: " +points);
-    $('#avgHR').text(Math.round(avgHeartRate) + "BPM");
-    $('#avgCad').text(Math.round(avgCad) + "SPM");
-    $('#maxHr').text("Max Heartrate: " + maxHR + "BPM");
-    $('#minHr').text("Min Heartrate: " + minHR + "BPM");
+    $('#avgHR').text(Math.round(avgHeartRate) + " BPM");
+    $('#avgCad').text(Math.round(avgCad) + " SPM");
+    $('#maxHr').text("Max Heartrate(BPM):  " + maxHR);
+    $('#minHr').text("Min Heartrate(BPM):  " + minHR);
     $('#tt').text("Time Taken: " + hours + " hours " + minutes + " minutes and " + seconds + " seconds");
 
   },
