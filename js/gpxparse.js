@@ -75,8 +75,13 @@ $(document).ready(function(){
       // console.log("HeartRate: " + heartrate);
       numTrkpts++;
     });
-    var startTime = times[0];
-    var endTime = times[numTrkpts-1];
+    var startTime = new Date(times[0]);
+    var endTime = new Date(times[numTrkpts-1]);
+    var res = Math.abs(endTime - startTime) / 1000;
+    var hours = Math.floor(res / 3600) % 24;
+    var minutes = Math.floor(res / 60) % 60;
+    var seconds = res % 60;
+
     var year = startTime[0]+startTime[1]+startTime[2]+startTime[3];
     var month = startTime[5]+startTime[6];
     var day = startTime[8]+startTime[9];
@@ -87,6 +92,9 @@ $(document).ready(function(){
     // console.log("Elevations: " + elevations);
     console.log("Start: " + startTime);
     console.log("End: " + endTime);
+    console.log("Hours: " + hours);
+    console.log("Minutes: " + minutes);
+    console.log("Seconds: " + seconds);
     // console.log(hours);
     var avgHeartRate = heartRateSum / numTrkpts;
     var avgCad = cadSum / numTrkpts;
@@ -97,6 +105,7 @@ $(document).ready(function(){
     $('#avgCad').text(Math.round(avgCad) + "SPM");
     $('#maxHr').text("Max Heartrate: " + maxHR + "BPM");
     $('#minHr').text("Min Heartrate: " + minHR + "BPM");
+    $('#tt').text("Time Taken: " + hours + " hours " + minutes + " minutes and " + seconds + " seconds");
 
   },
   error: function() {
