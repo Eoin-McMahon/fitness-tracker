@@ -436,20 +436,20 @@ color:#2590EB;
 
 .chart
 {
-      width: 50%;
+      width: 35%;
       height:auto;
-      margin-left: 10%;
+      margin-left: 5%;
       float:left;
 }
 
 .chartdata
 {
-
       float:left;
 }
 .chartdata ul li{
-      font-size: 40px;
+      font-size: 20px;
       font-weight: bold;
       list-style-type: none;
-      margin: 30% auto;
+      margin: 20px;
+      padding-bottom: 15px;
 }
