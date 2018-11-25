@@ -12,6 +12,24 @@ $(document).ready(function(){
      $("#elevChart").show();
    });
 
+   $("#moveMap").click(function() {
+       $('html, body').animate({
+           scrollTop: $("#mapid").offset().top
+       }, 2000);
+   });
+
+   $("#moveGraph").click(function() {
+       $('html, body').animate({
+           scrollTop: $("#heartChart").offset().top
+       }, 2000);
+   });
+
+   $("#moveAverages").click(function() {
+       $('html, body').animate({
+           scrollTop: $(".sectiontitle").offset().top
+       }, 2000);
+   });
+
   $.ajax({
     type: "GET",
     url: "/assets/Lugano.gpx",
