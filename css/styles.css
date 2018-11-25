@@ -447,7 +447,8 @@ color:#2590EB;
 
 .chartdata
 {
-      align-items: center;
+      /*align-items: center;*/
+      float: right;
 }
 .chartdata ul li{
       font-size: 20px;

@@ -80,19 +80,25 @@
   </div>
 
 <div class="analysis">
-  <div class="chart" id="heartChart"></div>
-  <div class="chart" id="elevChart"></div>
+  <div class="chart">
+     <div id="heartChart"></div>
+     <div id="elevChart"></div>
+  </div>
+
+  <div class="chartdata">
+    <ul>
+      <li id="maxHr">Max HeartRate: </li>
+      <li id="minHr">Min HeartRate: </li>
+      <li id="altitude">Altitude:  </li>
+      <li id="disRan">Distance Run: </li>
+      <li id="tt">Time Taken: </li>
+      <li id="heartButton">Show Heartrates</li>
+      <li id="elevButton">Show Elevations</li>
+    </ul>
+  </div>
 </div>
 
-<div class="chartdata">
-  <ul>
-    <li id="maxHr">Max HeartRate: </li>
-    <li id="minHr">Min HeartRate: </li>
-    <li id="altitude">Altitude:  </li>
-    <li id="disRan">Distance Run: </li>
-    <li id="tt">Time Taken: </li>
-  </ul>
-</div>
+
 <script type="text/javascript" src="./js/script.js"></script>
 <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js" integrity="sha256-o8aByMEvaNTcBsw94EfRLbBrJBI+c3mjna/j4LrfyJ8=" crossorigin="anonymous"></script>

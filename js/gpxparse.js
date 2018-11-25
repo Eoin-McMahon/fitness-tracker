@@ -1,7 +1,17 @@
 $(document).ready(function(){
-    // getAlert();
 
-  // $("#dvContent").append("<ul></ul>");
+   $("#elevChart").hide();
+
+   $("#heartButton").click(function(){
+     $("#elevChart").hide();
+     $("#heartChart").show();
+   });
+
+   $("#elevButton").click(function(){
+     $("#heartChart").hide();
+     $("#elevChart").show();
+   });
+
   $.ajax({
     type: "GET",
     url: "/assets/Lugano.gpx",
