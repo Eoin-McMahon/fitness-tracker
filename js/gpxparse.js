@@ -33,9 +33,11 @@ $(document).ready(function(){
   $("#fileinput").change(function(){
        $.ajax({
           type: "GET",
-          url: $("#fileinput").val(),
+          url: "assets/"+$('input[type=file]').val().split('\\').pop(),
           dataType: "xml",
           success: function(xml){
+
+          console.log($("#fileinput").val());
 
           var times = [];
           var elevations = [];
