@@ -32,7 +32,7 @@ $(document).ready(function(){
 
   $.ajax({
     type: "GET",
-    url: "/assets/Lugano.gpx",
+    url: "/assets/A.gpx",
     dataType: "xml",
     success: function(xml){
 
