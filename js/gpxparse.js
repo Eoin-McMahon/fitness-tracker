@@ -1,6 +1,17 @@
 $(document).ready(function(){
 
-   $("#elevChart").hide();
+   $("#mapid").hide();
+   $(".analysis").hide();
+   $(".mapData").hide();
+   $(".sectiontitle").hide();
+
+   function showData(){
+      $("#mapid").show();
+      $(".analysis").show();
+      $(".mapData").show();
+      $(".sectiontitle").show();
+      $("#elevChart").hide();
+   }
 
    $("#heartButton").click(function(){
      $("#elevChart").hide();
@@ -150,6 +161,7 @@ $(document).ready(function(){
           $('#distanceRan').text(totalDis.toFixed(2) + "KM");
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
           createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
+          showData();
        },
        error: function() {
           alert("An error occurred while processing XML file.");
