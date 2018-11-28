@@ -1,3 +1,10 @@
+
+window.onload = function(){
+
+    
+
+}
+
 $(document).ready(function(){
 
    $("#mapid").hide();
@@ -71,11 +78,11 @@ $(document).ready(function(){
           var minHR = 0;
 
           //distance Stats
-          var lats = [];
-          var lons = [];
+            lats = [];
+            lons = [];
           var heartrates = []
           console.log("Aquiring Stats...");
-
+        
           //Aquires the appropriate stats from each trkpt
           $(xml).find('trkpt').each(function(){
            times.push($(this).find('time').text());
@@ -89,6 +96,13 @@ $(document).ready(function(){
            if(parseInt(hr) > maxHR){
                maxHR = parseInt(hr);
            }
+            console.log("LATS AND LONS:::");
+
+           console.log(lats, lons);
+           points = [];
+
+          
+
 
            //calculates minHR
            if((parseInt(hr) < minHR) || minHR == 0){
@@ -162,10 +176,34 @@ $(document).ready(function(){
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
           createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
           showData();
-       },
+
+          for (var n=0; i < lats.length-1; i++) {
+            
+                //console.log("Latitudes: "+lats[i]);
+                points.push(L.latLng(lats[i], lons[i]));
+            
+        }
+    mymap = L.map('mapid').setView([55.8642, -4.2518],13);
+    
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
+    }).addTo(mymap);
+    console.log(points);
+    L.marker(points[0]).addTo(map).bindPopup('Start').openPopup();
+                var last = points.length;
+                var lastc = last - 1;
+                L.marker(points[lastc]).addTo(map).bindPopup('Finish').openPopup();
+                var route = L.polyline(points, { color: 'red' }).addTo(map);
+                map.fitBounds(route.getBounds());
+                map.setView(points[0]);       },
        error: function() {
           alert("An error occurred while processing XML file.");
        }
+
+       
      });
    });
 
