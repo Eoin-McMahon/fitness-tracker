@@ -39,19 +39,19 @@ $(document).ready(function(){
    $("#moveMap").click(function() {
        $('html, body').animate({
            scrollTop: $("#mapid").offset().top
-       }, 2000);
+       }, 1500);
    });
 
    $("#moveGraph").click(function() {
        $('html, body').animate({
            scrollTop: $("#heartChart").offset().top
-       }, 2000);
+       }, 1500);
    });
 
    $("#moveAverages").click(function() {
        $('html, body').animate({
            scrollTop: $(".sectiontitle").offset().top
-       }, 2000);
+       }, 1500);
    });
 
   $("#fileinput").change(function(){
