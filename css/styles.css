@@ -565,10 +565,10 @@ ul{
   background-position: right center; /* change the direction of the change here */
 }
 
-#heartChart{
-  margin-left: 50%;
-}
 
-#evelChart{
-  margin-left: 50%;
+.charts
+{
+  display: inline-block;
+  margin-left:25%;
+  margin-top: 5%;
 }
