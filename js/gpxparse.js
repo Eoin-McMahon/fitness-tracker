@@ -1,23 +1,29 @@
 
 window.onload = function(){
 
-    
+
 
 }
 
 $(document).ready(function(){
 
    $("#mapid").hide();
-   $(".analysis").hide();
+   $(".chart").hide();
+   $(".chartdata").hide();
    $(".mapData").hide();
    $(".sectiontitle").hide();
+   $("#elevButton").hide();
+   $("#heartButton").hide();
 
    function showData(){
       $("#mapid").show();
-      $(".analysis").show();
+      $(".chart").show();
+      $(".chartdata").show();
       $(".mapData").show();
       $(".sectiontitle").show();
       $("#elevChart").hide();
+      $("#elevButton").show();
+      $("#heartButton").show();
    }
 
    $("#heartButton").click(function(){
@@ -82,7 +88,7 @@ $(document).ready(function(){
             lons = [];
           var heartrates = []
           console.log("Aquiring Stats...");
-        
+
           //Aquires the appropriate stats from each trkpt
           $(xml).find('trkpt').each(function(){
            times.push($(this).find('time').text());
@@ -101,7 +107,7 @@ $(document).ready(function(){
            console.log(lats, lons);
            points = [];
 
-          
+
 
 
            //calculates minHR
@@ -178,13 +184,13 @@ $(document).ready(function(){
           showData();
 
           for (var n=0; i < lats.length-1; i++) {
-            
+
                 //console.log("Latitudes: "+lats[i]);
                 points.push(L.latLng(lats[i], lons[i]));
-            
+
         }
     mymap = L.map('mapid').setView([55.8642, -4.2518],13);
-    
+
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
@@ -203,7 +209,7 @@ $(document).ready(function(){
           alert("An error occurred while processing XML file.");
        }
 
-       
+
      });
    });
 
