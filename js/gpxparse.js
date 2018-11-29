@@ -1,10 +1,3 @@
-
-window.onload = function(){
-
-
-
-}
-
 $(document).ready(function(){
 
    $("#mapid").hide();
