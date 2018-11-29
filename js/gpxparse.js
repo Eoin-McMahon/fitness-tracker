@@ -127,6 +127,7 @@ $(document).ready(function(){
           //distance stats
           var totalDis = 0;
           var radius = 6371;
+          
           //function used to caculate totalDis
           for(var i=0; i<lats.length; i++ ){
            if(i != (lats.length - 1)){
