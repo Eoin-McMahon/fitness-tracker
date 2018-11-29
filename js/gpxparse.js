@@ -95,9 +95,9 @@ $(document).ready(function(){
               if(parseInt(hr) > maxHR){
                   maxHR = parseInt(hr);
               }
-               console.log("LATS AND LONS:::");
+               // console.log("LATS AND LONS:::");
 
-              console.log(lats, lons);
+              // console.log(lats, lons);
               points = [];
 
               //calculates minHR
@@ -173,7 +173,7 @@ $(document).ready(function(){
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
           createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
           showData();
-          createMap(lats, lons);
+          createMap(lats, lons, heartrates);
        },
 
           error: function() {
@@ -225,15 +225,13 @@ function createChart(numTrkpts, data, chartTitle, div, x, y){
 
    }
 
-function createMap(lats, lons){
-
+function createMap(lats, lons, heartrates){
+   console.log("Creating Map");
    var points = []
 
    for (var i=0; i < lats.length-1; i++) {
-
         //console.log("Latitudes: "+lats[i]);
         points.push(L.latLng(lats[i], lons[i]));
-
    }
 
    mymap = L.map('mapid').setView([55.8642, -4.2518],13);
@@ -245,15 +243,25 @@ function createMap(lats, lons){
       accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
    }).addTo(mymap);
 
-   console.log(points);
+   // console.log(points);
 
    L.marker(points[0]).addTo(mymap).bindPopup('Start').openPopup();
    var last = points.length;
    var lastc = last - 1;
    L.marker(points[lastc]).addTo(mymap).bindPopup('Finish').openPopup();
-   var route = L.polyline(points, { color: 'red' }).addTo(mymap);
-   map.fitBounds(route.getBounds());
-   map.setView(points[0]);
+   var route = L.polyline(points, { color: 'blue' }).addTo(mymap);
+   mymap.fitBounds(route.getBounds());
+   mymap.setView(points[0]);
+
+   console.log("Doing HRs");
+
+   //Adds every 11th HR to map
+   for(var i=0; i<heartrates.length; i++ ){
+      console.log("HR PLOT");
+      if((i % 11) == 0){
+         L.marker(points[i]).addTo(mymap).bindPopup("HR: " + heartrates[i] + "BPM").openPopup();
+      }
+   }
 
  }
 
