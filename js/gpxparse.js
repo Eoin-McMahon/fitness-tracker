@@ -69,10 +69,10 @@ $(document).ready(function(){
 
           //aquires name and type of each activity
           $(xml).find('trk').each(function(){
-           console.log("Finding name and type...");
-           var name = $(this).find('name').text();
-           var type = $(this).find('type').text();
-           $('#filename').text(name + " - " + type);
+              console.log("Finding name and type...");
+              var name = $(this).find('name').text();
+              var type = $(this).find('type').text();
+              $('#filename').text(name + " - " + type);
 
           });
 
@@ -84,41 +84,38 @@ $(document).ready(function(){
           var minHR = 0;
 
           //distance Stats
-            lats = [];
-            lons = [];
+          var lats = [];
+          var lons = [];
           var heartrates = []
           console.log("Aquiring Stats...");
 
           //Aquires the appropriate stats from each trkpt
           $(xml).find('trkpt').each(function(){
-           times.push($(this).find('time').text());
-           lats.push($(this).attr('lat'));
-           lons.push($(this).attr('lon'));
-           elevations.push($(this).find('ele').text());
+              times.push($(this).find('time').text());
+              lats.push($(this).attr('lat'));
+              lons.push($(this).attr('lon'));
+              elevations.push($(this).find('ele').text());
 
-           var hr = $(this).find('ns3\\:hr').text();
-           heartrates.push(hr);
-           //calculates maxHR
-           if(parseInt(hr) > maxHR){
-               maxHR = parseInt(hr);
-           }
-            console.log("LATS AND LONS:::");
+              var hr = $(this).find('ns3\\:hr').text();
+              heartrates.push(hr);
+              //calculates maxHR
+              if(parseInt(hr) > maxHR){
+                  maxHR = parseInt(hr);
+              }
+               console.log("LATS AND LONS:::");
 
-           console.log(lats, lons);
-           points = [];
+              console.log(lats, lons);
+              points = [];
 
+              //calculates minHR
+              if((parseInt(hr) < minHR) || minHR == 0){
+                  minHR = parseInt(hr);
+              }
 
-
-
-           //calculates minHR
-           if((parseInt(hr) < minHR) || minHR == 0){
-               minHR = parseInt(hr);
-           }
-
-           //heartRateSum and cadSum used for avgs
-           heartRateSum += parseInt(hr);
-           cadSum += parseInt($(this).find('ns3\\:cad').text());
-           numTrkpts++;
+              //heartRateSum and cadSum used for avgs
+              heartRateSum += parseInt(hr);
+              cadSum += parseInt($(this).find('ns3\\:cad').text());
+              numTrkpts++;
           });
 
           //time stats
@@ -150,7 +147,7 @@ $(document).ready(function(){
                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
                totalDis += (radius * c);
            }
-        }
+         }
 
           //outputting on console
           console.log("Min HR: " + minHR);
@@ -176,38 +173,18 @@ $(document).ready(function(){
           $('#avgCad').text(Math.round(avgCad) + " SPM");
           $('#maxHr').text("Max Heartrate(BPM):  " + maxHR);
           $('#minHr').text("Min Heartrate(BPM):  " + minHR);
+          $('#HRrange').text(minHR + " - " + maxHR + " BPM");
           $('#tt').text("Time Taken: " + hours + " hours " + minutes + " minutes and " + seconds + " seconds");
           $('#disRan').text("Distance Run(km): " + totalDis.toFixed(2));
           $('#distanceRan').text(totalDis.toFixed(2) + "KM");
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
           createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
           showData();
+       },
 
-          for (var n=0; i < lats.length-1; i++) {
-
-                //console.log("Latitudes: "+lats[i]);
-                points.push(L.latLng(lats[i], lons[i]));
-
-        }
-    mymap = L.map('mapid').setView([55.8642, -4.2518],13);
-
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
-    }).addTo(mymap);
-    console.log(points);
-    L.marker(points[0]).addTo(map).bindPopup('Start').openPopup();
-                var last = points.length;
-                var lastc = last - 1;
-                L.marker(points[lastc]).addTo(map).bindPopup('Finish').openPopup();
-                var route = L.polyline(points, { color: 'red' }).addTo(map);
-                map.fitBounds(route.getBounds());
-                map.setView(points[0]);       },
-       error: function() {
-          alert("An error occurred while processing XML file.");
-       }
+          error: function() {
+             alert("An error occurred while processing XML file.");
+         }
 
 
      });
@@ -253,5 +230,32 @@ function createChart(numTrkpts, data, chartTitle, div, x, y){
    Plotly.newPlot(div, data, layout);
 
    }
+
+// function createMap(lats, lons){
+//
+//    for (var n=0; i < lats.length-1; i++) {
+//
+//         //console.log("Latitudes: "+lats[i]);
+//         points.push(L.latLng(lats[i], lons[i]));
+//
+//    }
+//
+//    mymap = L.map('mapid').setView([55.8642, -4.2518],13);
+//
+//    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//    maxZoom: 18,
+//    id: 'mapbox.streets',
+//    accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
+//    }).addTo(mymap);
+//    console.log(points);
+//    L.marker(points[0]).addTo(map).bindPopup('Start').openPopup();
+//            var last = points.length;
+//            var lastc = last - 1;
+//            L.marker(points[lastc]).addTo(map).bindPopup('Finish').openPopup();
+//            var route = L.polyline(points, { color: 'red' }).addTo(map);
+//            map.fitBounds(route.getBounds());
+//            map.setView(points[0]);       }
+//   }
 
 });
