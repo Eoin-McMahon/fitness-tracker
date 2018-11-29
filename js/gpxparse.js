@@ -159,7 +159,7 @@ $(document).ready(function(){
           var avgCad = cadSum / numTrkpts;
           console.log("Avg HeartRates: " + Math.round(avgHeartRate));
           console.log("Avg Cad: " + Math.round(avgCad));
-          console.log("Points: " + points);
+          // console.log("Points: " + points);
 
           //updating html variables
           $('#avgHR').text(Math.round(avgHeartRate) + " BPM");
@@ -173,6 +173,7 @@ $(document).ready(function(){
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');
           createChart(numTrkpts, elevations, "Elevations on Run", 'elevChart', 'Distance Ran(KM)', 'Elevation');
           showData();
+          createMap(lats, lons);
        },
 
           error: function() {
@@ -224,31 +225,36 @@ function createChart(numTrkpts, data, chartTitle, div, x, y){
 
    }
 
-// function createMap(lats, lons){
-//
-//    for (var n=0; i < lats.length-1; i++) {
-//
-//         //console.log("Latitudes: "+lats[i]);
-//         points.push(L.latLng(lats[i], lons[i]));
-//
-//    }
-//
-//    mymap = L.map('mapid').setView([55.8642, -4.2518],13);
-//
-//    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//    maxZoom: 18,
-//    id: 'mapbox.streets',
-//    accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
-//    }).addTo(mymap);
-//    console.log(points);
-//    L.marker(points[0]).addTo(map).bindPopup('Start').openPopup();
-//            var last = points.length;
-//            var lastc = last - 1;
-//            L.marker(points[lastc]).addTo(map).bindPopup('Finish').openPopup();
-//            var route = L.polyline(points, { color: 'red' }).addTo(map);
-//            map.fitBounds(route.getBounds());
-//            map.setView(points[0]);       }
-//   }
+function createMap(lats, lons){
+
+   var points = []
+
+   for (var i=0; i < lats.length-1; i++) {
+
+        //console.log("Latitudes: "+lats[i]);
+        points.push(L.latLng(lats[i], lons[i]));
+
+   }
+
+   mymap = L.map('mapid').setView([55.8642, -4.2518],13);
+
+   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoiY29yeXBhdGVyc29uIiwiYSI6ImNqb3NzM2ZmNDA5eXMzcHMzdXIwd3ZhN2sifQ.gISfRqB_iA-JlXlUkCP-Tg'
+   }).addTo(mymap);
+
+   console.log(points);
+
+   L.marker(points[0]).addTo(mymap).bindPopup('Start').openPopup();
+   var last = points.length;
+   var lastc = last - 1;
+   L.marker(points[lastc]).addTo(mymap).bindPopup('Finish').openPopup();
+   var route = L.polyline(points, { color: 'red' }).addTo(mymap);
+   map.fitBounds(route.getBounds());
+   map.setView(points[0]);
+
+ }
 
 });
