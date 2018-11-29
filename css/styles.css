@@ -510,12 +510,11 @@ nav ul li a:hover {
   margin: 0 auto;
 }
 
-
 .chart{
-  width: 40%;
-  height:10%;
-  margin-left: 5%;
-  float:left;
+  width: 50%;
+  height:20%;
+  /* margin-left: 5%; */
+  float:center;
   /*padding-bottom: 30px;*/
 }
 
