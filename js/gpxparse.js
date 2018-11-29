@@ -79,7 +79,8 @@ $(document).ready(function(){
           //distance Stats
           var lats = [];
           var lons = [];
-          var heartrates = []
+          var heartrates = [];
+          var elevSum = 0;
           console.log("Aquiring Stats...");
 
           //Aquires the appropriate stats from each trkpt
@@ -87,7 +88,8 @@ $(document).ready(function(){
               times.push($(this).find('time').text());
               lats.push($(this).attr('lat'));
               lons.push($(this).attr('lon'));
-              elevations.push($(this).find('ele').text());
+              var elev = $(this).find('ele').text();
+              elevations.push(elev);
 
               var hr = $(this).find('ns3\\:hr').text();
               heartrates.push(hr);
@@ -106,6 +108,7 @@ $(document).ready(function(){
               }
 
               //heartRateSum and cadSum used for avgs
+              elevSum += parseInt(elev);
               heartRateSum += parseInt(hr);
               cadSum += parseInt($(this).find('ns3\\:cad').text());
               numTrkpts++;
@@ -122,7 +125,7 @@ $(document).ready(function(){
           //extra time stats, probs wont be used
           var year = startTime[0]+startTime[1]+startTime[2]+startTime[3];
           var month = startTime[5]+startTime[6];
-          var day = startTime[8]+startTime[9];
+          var day = startTime[8]+startTime[9];Math.round(avgHeartRate) + " BPM"
 
           //distance stats
           var totalDis = 0;
@@ -159,15 +162,15 @@ $(document).ready(function(){
           var avgCad = cadSum / numTrkpts;
           console.log("Avg HeartRates: " + Math.round(avgHeartRate));
           console.log("Avg Cad: " + Math.round(avgCad));
-          // console.log("Points: " + points);
-
+          // console.log("Points: " + points);s
           //updating html variables
+          $('#altitude').text(Math.round(elevSum / numTrkpts) + " m");
           $('#avgHR').text(Math.round(avgHeartRate) + " BPM");
           $('#avgCad').text(Math.round(avgCad) + " SPM");
           $('#maxHr').text("Max Heartrate(BPM):  " + maxHR);
           $('#minHr').text("Min Heartrate(BPM):  " + minHR);
           $('#HRrange').text(minHR + " - " + maxHR + " BPM");
-          $('#tt').text("Time Taken: " + hours + " hours " + minutes + " minutes and " + seconds + " seconds");
+          $('#tt').text(hours + "h " + minutes + "m " + seconds + "s");
           $('#disRan').text("Distance Run(km): " + totalDis.toFixed(2));
           $('#distanceRan').text(totalDis.toFixed(2) + "KM");
           createChart(numTrkpts, heartrates, "Heartrate on Run", 'heartChart', 'Distance Ran(KM)', 'Heartrate(BPM)');

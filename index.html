@@ -22,92 +22,104 @@
 
 
   <div class="section1">
-  <header>
+    <header>
       <div class="container">
-          <nav>
-                <input type="checkbox" id="nav" class="hidden">
-                <label for="nav" class="nav-btn">
-                      <i></i>
-                      <i></i>
-                      <i></i>
-                </label>
-                <div class="logo">
-                      <a href="#">•</a>
-                      <a href="#">OrangFit</a>
-                      <a href="./easteregg.html" onclick="playAudio()">•</a>
-                </div>
-                <div class="nav-wrapper">
-                      <ul>
-                            <li id="moveMap"><a href="#">Map</a></li>
-                            <li id="moveAverages"><a href="#">Averages</a></li>
-                            <li id="moveGraph"><a href="#">Graph</a></li>
-                            <!-- <li id="moveAbout"><a href="#">About Us</a></li> -->
+        <nav>
+          <input type="checkbox" id="nav" class="hidden">
+          <label for="nav" class="nav-btn">
+            <i></i>
+            <i></i>
+            <i></i>
+          </label>
+          <div class="logo">
+            <a href="#">•</a>
+            <a href="#">OrangFit</a>
+            <a href="./easteregg.html" onclick="playAudio()">•</a>
+          </div>
+          <div class="nav-wrapper">
+            <ul>
+              <li id="moveMap"><a href="#">Map</a></li>
+              <li id="moveAverages"><a href="#">Stats</a></li>
+              <li id="moveGraph"><a href="#">Graph</a></li>
+              <!-- <li id="moveAbout"><a href="#">About Us</a></li> -->
 
-                      </ul>
-                </div>
-          </nav>
-    </div>
-  </header>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-  <div class="wrapper">
-     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-     <script type="text/javascript" src="js/gpxparse.js"></script>
+    <div class="wrapper">
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script type="text/javascript" src="js/gpxparse.js"></script>
       <div class="file-upload">
         <!-- PARSING FUNCTION SHOULD BE CALLED HERE, this is just a test function -->
 
         <input type="file" id='fileinput'/>
         <i class="fa fa-arrow-up"></i>
       </div>
-  </div>
+    </div>
 
-  <div class="uploaded">
-    <p id="filename">Uploaded File</p>
+    <div class="uploaded">
+      <p id="filename">Uploaded File</p>
+    </div>
   </div>
-</div>
 
   <div id="mapid"></div>
-  <h1 class="sectiontitle">Stats</h1>
+  <h1 class="sectiontitle">STATS</h1>
   <div class="mapData">
     <div class="heartbeat">AVG HEARTBEAT</div>
     <div class="hearticon"> <i class="fas fa-heartbeat fa-5x" style="color: #b8bec5;"></i></div>
     <div class="heartdata" id="avgHR"> N/A</div>
-    <div class="cadence">CADENCE</div>
+    <div class="cadence">AVG CADENCE</div>
     <div class="cadenceicon"> <i class="fas fa-running fa-5x" style="color: #b8bec5;"></i> </div>
     <div class="cadencedata" id="avgCad">N/A</div>
     <div class="distance">DISTANCE</div>
     <div class="distanceicon"> <i class="fas fa-ruler-horizontal fa-5x" style="color: #b8bec5;"></i> </div>
     <div class="distancedata" id="distanceRan">N/A</div>
 
+    <div class="heartbeat_range">HEARTBEAT RANGE</div>
+    <div class="hearticon_range"> <i class="fas fa-heartbeat fa-5x" style="color: #b8bec5;"></i></div>
+    <div class="hbrangedata" id="HRrange"> N/A</div>
 
+    <div class="altitude">AVG ALTITUDE</div>
+    <div class="altitudeicon"> <i class="fas fa-mountain fa-5x" style="color: #b8bec5;"></i> </div>
+    <div class="altitudedata" id="altitude">N/A</div>
+
+    <div class="time">TIME TAKEN</div>
+    <div class="timeicon"> <i class="fas fa-stopwatch fa-5x" style="color: #b8bec5;"></i> </div>
+    <div class="timedata" id="tt">N/A</div>
   </div>
-<ul>
-  <li id="heartButton"><a class="btn btn-1">Show Heartrates</a></li>
-      <li id="elevButton"><a class="btn btn-2">Show Elevations</a></li>
-</ul>
-<div style="clear:both;">
-  <div label="analysis">
-    <div class="chart">
-      <div id="heartChart"></div>
-      <div id="elevChart"></div>
-    </div>
 
-    <div class="chartdata">
-      <ul>
-        <li id="maxHr">Max HeartRate: N/A</li>
-        <li id="minHr">Min HeartRate: N/A</li>
-        <li id="altitude">Altitude: N/A</li>
-        <li id="disRan">Distance Run: N/A</li>
-        <li id="tt">Time Taken: N/A</li>
-        <!-- <li id="heartButton"><a class="btn btn-1">Show Heartrates</a></li>
-        <li id="elevButton"><a class="btn btn-2">Show Elevations</a></li> -->
+  
+  <ul>
+    <li id="heartButton"><a class="btn btn-1">Show Heartrates</a></li>
+    <li id="elevButton"><a class="btn btn-2">Show Elevations</a></li>
+  </ul>
 
-      </ul>
+  <div style="clear:both;">
+    <div label="analysis">
+      <div class="chart">
+        <div id="heartChart"></div>
+        <div id="elevChart"></div>
+      </div>
+
+      <!-- <div class="chartdata">
+        <ul>
+          <li id="maxHr">Max HeartRate: N/A</li>
+          <li id="minHr">Min HeartRate: N/A</li>
+          <li id="altitude">Altitude: N/A</li>
+          <li id="disRan">Distance Run: N/A</li>
+          <li id="tt">Time Taken: N/A</li>
+          <li id="heartButton"><a class="btn btn-1">Show Heartrates</a></li>
+          <li id="elevButton"><a class="btn btn-2">Show Elevations</a></li>
+        </ul>
+      </div> -->
     </div>
   </div>
-</div>
 
 
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js" integrity="sha256-o8aByMEvaNTcBsw94EfRLbBrJBI+c3mjna/j4LrfyJ8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js" integrity="sha256-o8aByMEvaNTcBsw94EfRLbBrJBI+c3mjna/j4LrfyJ8=" crossorigin="anonymous"></script>
 </body>
 </html>
