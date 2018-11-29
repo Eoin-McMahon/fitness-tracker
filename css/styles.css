@@ -511,11 +511,10 @@ nav ul li a:hover {
 }
 
 .chart{
-  width: 50%;
-  height:20%;
-  /* margin-left: 5%; */
-  float:center;
-  /*padding-bottom: 30px;*/
+  width: 60%;
+  height:30%;
+  /* float:center; */
+  align-items: center;
 }
 
 .chartdata{
@@ -564,4 +563,12 @@ ul{
 
 .btn:hover {
   background-position: right center; /* change the direction of the change here */
+}
+
+#heartChart{
+  margin-left: 50%;
+}
+
+#evelChart{
+  margin-left: 50%;
 }

@@ -7,6 +7,10 @@ $(document).ready(function(){
    $(".sectiontitle").hide();
    $("#elevButton").hide();
    $("#heartButton").hide();
+   $("#moveMap").hide();
+   $("#moveAverages").hide();
+   $("#moveGraph").hide();
+
 
    function showData(){
       $("#mapid").show();
@@ -17,6 +21,9 @@ $(document).ready(function(){
       $("#elevChart").hide();
       $("#elevButton").show();
       $("#heartButton").show();
+      $("#moveMap").show();
+      $("#moveAverages").show();
+      $("#moveGraph").show();
    }
 
    $("#heartButton").click(function(){
@@ -130,7 +137,7 @@ $(document).ready(function(){
           //distance stats
           var totalDis = 0;
           var radius = 6371;
-          
+
           //function used to caculate totalDis
           for(var i=0; i<lats.length; i++ ){
            if(i != (lats.length - 1)){
