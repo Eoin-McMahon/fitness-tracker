@@ -97,21 +97,21 @@ function createColorStyle(r,g,b) {
 // A Bomb. Or firework.
 function Bomb(){
   var self = this;
-
+  
   self.radius = bombRadius;
   self.previousRadius = bombRadius;
   self.explodingDuration = explodingDuration;
   self.hasExploded = false;
   self.alive = true;
   self.color = new Color();
-
+  
   self.px = (window.innerWidth / 4) + (Math.random() * window.innerWidth / 2);
   self.py = window.innerHeight;
-
+  
   self.vx = minVx + Math.random() * deltaVx;
   self.vy = (minVy + Math.random() * deltaVy) * -1; // because y grows downwards
 
-  self.duration =
+  self.duration = 
 
   self.update = function(particlesVector){
     if(self.hasExploded){
@@ -145,9 +145,9 @@ function Bomb(){
       ctx.lineWidth = 1;
       ctx.fill();
     }
-
+    
   };
-
+  
 
   self.explode = function(particlesVector){
     self.hasExploded = true;
@@ -162,7 +162,7 @@ function Bomb(){
       }
     }
   };
-
+  
 }
 
 function Particle(parent, angle, speed){
@@ -223,7 +223,7 @@ function Controller(){
     deltaVx = 2*vx;
   };
 
-
+  
 
   self.resize = function(){
     screenWidth = window.innerWidth;
@@ -285,9 +285,9 @@ function Controller(){
     self.ctx.beginPath();
     self.ctx.fillStyle='rgba(0, 0, 0, 0.1)'; // Ghostly effect
     self.ctx.fillRect(0, 0, self.canvas.width, self.canvas.height);
-
-
-
+    
+    
+    
     for(var i = 0; i < self.readyBombs.length; i++){
       self.readyBombs[i].draw(self.ctx);
     }
@@ -305,12 +305,12 @@ function Controller(){
   self.animation = function(){
     self.update();
     self.draw();
-
+    
    if(Math.random() * 100 < percentChanceNewBomb) {
      self.readyBombs.push(new Bomb());
    }
-
-
+    
+        
     requestAnimationFrame(self.animation);
   }
 }
